@@ -3,36 +3,21 @@
 import { useState } from "react"
 import Image from "next/image"
 
-const t = {
-  tr: {
-    heading: "Yenileniyoruz.",
-    sub: "Yeni projeler ve genişleyen ekibimizle\nsizinle yenileniyoruz.",
-    contact: "Bize Ulaşın",
-    nameLabel: "Ad Soyad", namePh: "Ad ve soyadınız",
-    phoneLabel: "Telefon", phonePh: "0532 xxx xx xx",
-    emailLabel: "E-posta", emailPh: "ornek@email.com",
-    messageLabel: "Mesaj", messagePh: "Projeniz hakkında detayları paylaşın...",
-    send: "Gönder", sending: "Gönderiliyor...", sent: "Mesajınız iletildi!",
-    copy: "© 2026 ondokuz81. Tüm hakları saklıdır.",
-  },
-  en: {
-    heading: "We're Rebrewing.",
-    sub: "We are rebrewing ourselves with new projects\nand our growing team.",
-    contact: "Contact Us",
-    nameLabel: "Full Name", namePh: "Your full name",
-    phoneLabel: "Phone", phonePh: "+90 532 xxx xx xx",
-    emailLabel: "Email", emailPh: "example@email.com",
-    messageLabel: "Message", messagePh: "Share details about your project...",
-    send: "Send", sending: "Sending...", sent: "Message sent!",
-    copy: "© 2026 ondokuz81. All rights reserved.",
-  },
+const c = {
+  heading: "We're Rebrewing.",
+  sub: "We are rebrewing ourselves with new projects\nand our growing team.",
+  contact: "Contact Us",
+  nameLabel: "Full Name", namePh: "Your full name",
+  phoneLabel: "Phone", phonePh: "+90 532 xxx xx xx",
+  emailLabel: "Email", emailPh: "example@email.com",
+  messageLabel: "Message", messagePh: "Share details about your project...",
+  send: "Send", sending: "Sending...", sent: "Message sent!",
+  copy: "© 2026 ondokuz81. All rights reserved.",
 }
 
 export default function Page() {
-  const [lang, setLang] = useState<"tr" | "en">("en")
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
-  const c = t[lang]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -55,13 +40,6 @@ export default function Page() {
 
   return (
     <main className="h-screen flex flex-col overflow-hidden bg-white">
-
-      {/* Lang toggle */}
-      <div className="fixed top-5 right-5 z-50 flex items-center gap-1 bg-white border border-gray-200 rounded-full px-2 py-1 shadow-sm">
-        <button onClick={() => setLang("tr")} className={`px-2.5 py-1 text-xs font-semibold rounded-full transition-all ${lang === "tr" ? "bg-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>TR</button>
-        <span className="text-gray-300 text-xs">|</span>
-        <button onClick={() => setLang("en")} className={`px-2.5 py-1 text-xs font-semibold rounded-full transition-all ${lang === "en" ? "bg-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>EN</button>
-      </div>
 
       {/* Center content */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 min-h-0 overflow-y-auto py-8">
