@@ -35,3 +35,14 @@ body {
 .fade-up-delay-2 { animation-delay: 0.3s;  opacity: 0; }
 .fade-up-delay-3 { animation-delay: 0.45s; opacity: 0; }
 .fade-up-delay-4 { animation-delay: 0.6s;  opacity: 0; }
+
+.heading-hover {
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+  cursor: default;
+}
+.heading-hover:hover {
+  color: #f15a22;
+  text-shadow:
+    0 0 20px rgba(241, 90, 34, 0.6),
+    0 0 60px rgba(241, 90, 34, 0.25);
+}

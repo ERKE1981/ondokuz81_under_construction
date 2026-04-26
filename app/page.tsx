@@ -64,7 +64,7 @@ export default function Page() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl font-black text-white tracking-tight leading-none mb-3 text-center">
+          <h1 className="text-5xl font-black text-white tracking-tight leading-none mb-3 text-center heading-hover">
             {c.heading}
           </h1>
 
