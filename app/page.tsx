@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import DotGrid from "./components/DotGrid"
+import ShapeGrid from "./components/ShapeGrid"
 
 const c = {
   heading: "We're Rebrewing.",
@@ -42,14 +42,14 @@ export default function Page() {
   return (
     <main className="h-screen flex flex-col overflow-hidden bg-white relative">
 
-      <DotGrid
-        dotSize={5}
-        gap={26}
-        baseColor="#1a1a1a"
-        activeColor="#f15a22"
-        proximity={160}
-        shockRadius={260}
-        shockStrength={5}
+      <ShapeGrid
+        shape="square"
+        squareSize={70}
+        borderColor="#e8e8e8"
+        hoverFillColor="#f15a22"
+        direction="diagonal"
+        speed={0.3}
+        hoverTrailAmount={4}
       />
 
       {/* Center content */}
