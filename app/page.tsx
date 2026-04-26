@@ -47,7 +47,7 @@ export default function Page() {
         variant="snowflake"
         pixelResolution={500}
         density={0.2}
-        speed={0.9}
+        speed={0.25}
         flakeSize={0.015}
         brightness={1}
         depthFade={11}
