@@ -43,8 +43,8 @@ export default function Page() {
     <main className="h-screen flex flex-col overflow-hidden bg-black relative">
 
       <Aurora
-        colorStops={["#f15a22", "#47b4d7", "#fefefe"]}
-        speed={0.4}
+        colorStops={["#f15a22", "#fefefe", "#ffffff"]}
+        speed={0.8}
         blend={0.3}
         amplitude={1.0}
       />
