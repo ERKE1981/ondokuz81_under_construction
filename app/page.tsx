@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import DotGrid from "./components/DotGrid"
 
 const c = {
   heading: "We're Rebrewing.",
@@ -39,10 +40,20 @@ export default function Page() {
   }
 
   return (
-    <main className="h-screen flex flex-col overflow-hidden bg-white">
+    <main className="h-screen flex flex-col overflow-hidden bg-white relative">
+
+      <DotGrid
+        dotSize={5}
+        gap={26}
+        baseColor="#1a1a1a"
+        activeColor="#f15a22"
+        proximity={160}
+        shockRadius={260}
+        shockStrength={5}
+      />
 
       {/* Center content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 min-h-0 overflow-y-auto py-8">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 min-h-0 overflow-y-auto py-8">
         <div className="w-full max-w-md">
 
           {/* Logo */}
@@ -110,7 +121,7 @@ export default function Page() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-3 px-8 text-center flex-shrink-0">
+      <footer className="relative z-10 border-t border-gray-100 py-3 px-8 text-center flex-shrink-0">
         <p className="text-xs text-foreground/30">{c.copy}</p>
       </footer>
 
