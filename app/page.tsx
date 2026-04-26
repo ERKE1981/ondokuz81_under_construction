@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import ShapeGrid from "./components/ShapeGrid"
+import PixelSnow from "./components/PixelSnow"
 
 const c = {
   heading: "We're Rebrewing.",
@@ -42,14 +42,17 @@ export default function Page() {
   return (
     <main className="h-screen flex flex-col overflow-hidden bg-white relative">
 
-      <ShapeGrid
-        shape="square"
-        squareSize={70}
-        borderColor="#e8e8e8"
-        hoverFillColor="#f15a22"
-        direction="diagonal"
-        speed={0.3}
-        hoverTrailAmount={4}
+      <PixelSnow
+        color="#f15a22"
+        variant="snowflake"
+        pixelResolution={500}
+        density={0.2}
+        speed={0.9}
+        flakeSize={0.015}
+        brightness={1}
+        depthFade={11}
+        farPlane={28}
+        direction={180}
       />
 
       {/* Center content */}
