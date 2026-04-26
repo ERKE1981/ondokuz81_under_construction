@@ -41,7 +41,7 @@ const t = {
 }
 
 export default function Page() {
-  const [lang, setLang] = useState<"tr" | "en">("tr")
+  const [lang, setLang] = useState<"tr" | "en">("en")
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const c = t[lang]
@@ -49,11 +49,20 @@ export default function Page() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSending(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    setSending(false)
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
-    ;(e.target as HTMLFormElement).reset()
+    const form = e.target as HTMLFormElement
+    const data = Object.fromEntries(new FormData(form))
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      setSent(true)
+      form.reset()
+      setTimeout(() => setSent(false), 4000)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -112,6 +121,7 @@ export default function Page() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">{c.nameLabel}</label>
                   <input
+                    name="name"
                     type="text"
                     placeholder={c.namePh}
                     required
@@ -121,6 +131,7 @@ export default function Page() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">{c.phoneLabel}</label>
                   <input
+                    name="phone"
                     type="tel"
                     placeholder={c.phonePh}
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-foreground text-sm transition-all"
@@ -129,6 +140,7 @@ export default function Page() {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">{c.emailLabel}</label>
                   <input
+                    name="email"
                     type="email"
                     placeholder={c.emailPh}
                     required
@@ -139,6 +151,7 @@ export default function Page() {
               <div className="flex flex-col">
                 <label className="block text-sm font-medium text-foreground mb-1.5">{c.messageLabel}</label>
                 <textarea
+                  name="message"
                   placeholder={c.messagePh}
                   rows={7}
                   className="w-full flex-1 px-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-foreground text-sm transition-all resize-none"
